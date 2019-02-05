@@ -5,11 +5,13 @@
 //    Compile with: g++ RandomGraph.cxx UF.cxx -o RandomGraph
 //
 
-#include<stdlib.h>
-#include<time.h>
-#include<iostream.h>
-#include<fstream.h>
-#include<math.h>
+#include <stdlib.h>
+#include <time.h>
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
 
 #include "UF.h"
 

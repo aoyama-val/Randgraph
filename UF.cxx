@@ -1,6 +1,8 @@
 
 #include "UF.h"
 
+using namespace std;
+
 void UnionFind::init(int num_elmts) {      // n is number of UF elements
   int i;
 
