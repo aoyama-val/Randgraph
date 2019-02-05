@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+# RandomGraphの出力ファイルをGraphvizでsvgに変換するスクリプト
+
+filename = ARGV[0] || (puts "Usage: #{$0} FILE"; exit 1)
+dot_filename = "#{filename}.dot"
+svg_filename = "#{filename}.svg"
+
+puts "Creating #{dot_filename}"
+open(dot_filename, "w") do |dot|
+  dot.puts "digraph G {"
+  IO.foreach(filename, chomp: true) do |line|
+    a = line.split
+    next if a.length != 3
+    dot.puts "\"#{a[0]}\" -> \"#{a[1]}\" [label=\"#{a[2]}\"];"
+  end
+  dot.puts "}"
+end
+
+cmd = "dot -Tsvg #{dot_filename} -o #{svg_filename}"
+puts "Creating #{svg_filename}"
+puts cmd
+system(cmd)
